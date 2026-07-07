@@ -41,21 +41,24 @@ const LoginPage = () => {
     setError('');
 
     try {
-      // Simulate API call
+      // Simulate API call - This will accept ANY valid email and password
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Check credentials (demo validation)
-      if (
-        data.email === 'student@siu.edu.bd' &&
-        data.password === 'password123'
-      ) {
-        console.log('Login successful:', data);
-        // Redirect to home page after successful login
-        router.push('/');
-        router.refresh(); // Optional: refresh the page to update state
-      } else {
-        setError('Invalid email or password. Please try again.');
-      }
+      // Store user data in localStorage or context (optional)
+      const userData = {
+        email: data.email,
+        loginTime: new Date().toISOString(),
+        isAuthenticated: true,
+      };
+
+      // Save to localStorage for persistence
+      localStorage.setItem('user', JSON.stringify(userData));
+
+      console.log('Login successful:', data);
+
+      // Redirect to home page after successful login
+      router.push('/');
+      router.refresh(); // Optional: refresh the page to update state
     } catch (err) {
       setError('Something went wrong. Please try again.');
     } finally {
@@ -231,6 +234,7 @@ const LoginPage = () => {
                   <span className="text-xs sm:text-sm text-gray-500">or</span>
                   <button
                     type="button"
+                    onClick={() => router.push('/register')}
                     className="text-xs sm:text-sm text-indigo-600 hover:text-indigo-800 font-medium hover:underline"
                   >
                     Register
@@ -276,7 +280,7 @@ const LoginPage = () => {
               {/* Demo Credentials */}
               <div className="text-center">
                 <p className="text-[10px] sm:text-xs text-gray-400">
-                  Demo: student@siu.edu.bd / password123
+                  Try any valid email and password (min 6 characters)
                 </p>
               </div>
             </form>
