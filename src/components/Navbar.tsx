@@ -1,6 +1,6 @@
 'use client';
+import Link from 'next/link';
 import React, { useState } from 'react';
-
 interface NavItem {
   id: string;
   label: string;
@@ -72,15 +72,24 @@ const Navbar: React.FC = () => {
 
           {/* Auth Buttons - Right Side Desktop */}
           <div className="hidden md:flex items-center space-x-3">
-            <button className="px-5 py-2 text-sm lg:text-base font-semibold text-[#0a2b4e] bg-white rounded-md hover:bg-gray-100 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105">
+            <Link
+              href="login"
+              className="px-5 py-2 text-sm lg:text-base font-semibold text-[#0a2b4e] bg-white rounded-md hover:bg-gray-100 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105"
+            >
               Login
-            </button>
-            <button className="px-5 py-2 text-sm lg:text-base font-semibold text-white bg-[#6aabf7] border-2 border-[#6aabf7] rounded-md hover:bg-[#5a9be7] transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105">
+            </Link>
+            <Link
+              href="register"
+              className="px-5 py-2 text-sm lg:text-base font-semibold text-white bg-[#6aabf7] border-2 border-[#6aabf7] rounded-md hover:bg-[#5a9be7] transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105"
+            >
               Register
-            </button>
-            <button className="px-5 py-2 text-sm lg:text-base font-semibold text-white bg-orange-500 hover:bg-orange-600 rounded-md transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105">
+            </Link>
+            <Link
+              href="apply"
+              className="px-5 py-2 text-sm lg:text-base font-semibold text-white bg-orange-500 hover:bg-orange-600 rounded-md transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105"
+            >
               Apply Now
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -141,15 +150,24 @@ const Navbar: React.FC = () => {
           ))}
           {/* Auth Buttons - Mobile */}
           <div className="flex flex-col space-y-2.5 pt-4 border-t border-[#2a4f74]">
-            <button className="w-full px-4 py-2.5 text-sm font-semibold text-[#0a2b4e] bg-white rounded-md hover:bg-gray-100 transition-all duration-200">
+            <Link
+              href="login"
+              className="w-full px-4 py-2.5 text-sm font-semibold text-[#0a2b4e] bg-white rounded-md hover:bg-gray-100 transition-all duration-200"
+            >
               Login
-            </button>
-            <button className="w-full px-4 py-2.5 text-sm font-semibold text-white bg-[#6aabf7] border-2 border-[#6aabf7] rounded-md hover:bg-[#5a9be7] transition-all duration-200">
+            </Link>
+            <Link
+              href="register"
+              className="w-full px-4 py-2.5 text-sm font-semibold text-white bg-[#6aabf7] border-2 border-[#6aabf7] rounded-md hover:bg-[#5a9be7] transition-all duration-200"
+            >
               Register
-            </button>
-            <button className="w-full px-4 py-2.5 text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600 rounded-md transition-all duration-200">
+            </Link>
+            <Link
+              href="apply"
+              className="w-full px-4 py-2.5 text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600 rounded-md transition-all duration-200"
+            >
               Apply Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>
