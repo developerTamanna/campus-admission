@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useAuth } from '@/context/AuthContext';
 
 // Form validation schema
 const loginSchema = z.object({
@@ -20,6 +21,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 const LoginPage = () => {
   const router = useRouter();
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState('');
@@ -41,24 +43,24 @@ const LoginPage = () => {
     setError('');
 
     try {
-      // Simulate API call - This will accept ANY valid email and password
+      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Store user data in localStorage or context (optional)
+      // Create user data
       const userData = {
         email: data.email,
+        name: data.email.split('@')[0],
         loginTime: new Date().toISOString(),
         isAuthenticated: true,
       };
 
-      // Save to localStorage for persistence
-      localStorage.setItem('user', JSON.stringify(userData));
+      // Use auth context to login
+      login(userData);
 
       console.log('Login successful:', data);
 
-      // Redirect to home page after successful login
+      // Redirect to home page
       router.push('/');
-      router.refresh(); // Optional: refresh the page to update state
     } catch (err) {
       setError('Something went wrong. Please try again.');
     } finally {
