@@ -59,35 +59,37 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation Links - Center */}
-          <div className="hidden md:flex items-center space-x-0.5 lg:space-x-1 xl:space-x-2 overflow-x-auto max-w-full">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className="text-blue-100/80 hover:text-white px-2 lg:px-3 py-2 rounded-md text-xs lg:text-sm xl:text-base font-medium transition-all duration-200 hover:bg-[#1a3f64] hover:scale-105 whitespace-nowrap"
-              >
-                {item.label}
-              </a>
-            ))}
+          <div className="hidden md:flex items-center justify-center flex-1 min-w-0 px-2 lg:px-4">
+            <div className="flex items-center space-x-0.5 lg:space-x-1 xl:space-x-2 overflow-x-auto scrollbar-hide max-w-full">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className="text-blue-100/80 hover:text-white px-1.5 lg:px-2.5 xl:px-3 py-2 rounded-md text-[11px] lg:text-sm xl:text-base font-medium transition-all duration-200 hover:bg-[#1a3f64] hover:scale-105 whitespace-nowrap flex-shrink-0"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Auth Buttons - Right Side Desktop */}
-          <div className="hidden md:flex items-center space-x-2 lg:space-x-3 flex-shrink-0">
+          <div className="hidden md:flex items-center space-x-1.5 lg:space-x-2.5 xl:space-x-3 flex-shrink-0">
             <Link
               href="login"
-              className="px-3 lg:px-5 py-1.5 lg:py-2 text-xs lg:text-sm xl:text-base font-semibold text-[#0a2b4e] bg-white rounded-md hover:bg-gray-100 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 whitespace-nowrap"
+              className="px-2.5 lg:px-4 xl:px-5 py-1.5 lg:py-2 text-[11px] lg:text-sm xl:text-base font-semibold text-[#0a2b4e] bg-white rounded-md hover:bg-gray-100 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 whitespace-nowrap"
             >
               Login
             </Link>
             <Link
               href="register"
-              className="px-3 lg:px-5 py-1.5 lg:py-2 text-xs lg:text-sm xl:text-base font-semibold text-white bg-[#6aabf7] border-2 border-[#6aabf7] rounded-md hover:bg-[#5a9be7] transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 whitespace-nowrap"
+              className="px-2.5 lg:px-4 xl:px-5 py-1.5 lg:py-2 text-[11px] lg:text-sm xl:text-base font-semibold text-white bg-[#6aabf7] border-2 border-[#6aabf7] rounded-md hover:bg-[#5a9be7] transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 whitespace-nowrap"
             >
               Register
             </Link>
             <Link
               href="apply"
-              className="px-3 lg:px-5 py-1.5 lg:py-2 text-xs lg:text-sm xl:text-base font-semibold text-white bg-orange-500 hover:bg-orange-600 rounded-md transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 whitespace-nowrap"
+              className="px-2.5 lg:px-4 xl:px-5 py-1.5 lg:py-2 text-[11px] lg:text-sm xl:text-base font-semibold text-white bg-orange-500 hover:bg-orange-600 rounded-md transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 whitespace-nowrap"
             >
               Apply Now
             </Link>
@@ -176,6 +178,17 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Hide scrollbar for navigation */}
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </nav>
   );
 };
