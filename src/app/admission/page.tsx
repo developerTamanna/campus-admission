@@ -182,30 +182,30 @@ const ApplicationPage = () => {
   };
 
   const StepIndicator = ({ number, label, isActive, isCompleted }: any) => (
-    <div className="flex items-center">
+    <div className="flex items-center flex-1">
       <div className="flex flex-col items-center">
         <div
-          className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
+          className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold transition-all duration-300 flex-shrink-0 ${
             isActive
-              ? 'bg-indigo-600 text-white ring-4 ring-indigo-200'
+              ? 'bg-indigo-600 text-white ring-2 sm:ring-4 ring-indigo-200'
               : isCompleted
                 ? 'bg-green-500 text-white'
                 : 'bg-gray-200 text-gray-500'
           }`}
         >
           {isCompleted ? (
-            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+            <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
           ) : (
             number
           )}
         </div>
-        <span className="text-xs sm:text-sm mt-1.5 font-medium text-gray-600 hidden sm:block">
+        <span className="text-[10px] sm:text-xs md:text-sm mt-1 font-medium text-gray-600 hidden sm:block whitespace-nowrap">
           {label}
         </span>
       </div>
       {number < totalSteps && (
         <div
-          className={`flex-1 h-0.5 mx-2 sm:mx-4 ${
+          className={`flex-1 h-0.5 mx-1 sm:mx-2 md:mx-4 ${
             isCompleted ? 'bg-green-500' : 'bg-gray-200'
           }`}
         />
@@ -214,26 +214,26 @@ const ApplicationPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-6 sm:py-8 md:py-12">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-4 sm:py-6 md:py-8 lg:py-12 w-full overflow-hidden">
       <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-6 sm:mb-8">
-            <div className="flex justify-center mb-3 sm:mb-4">
-              <div className="bg-indigo-600 p-2.5 sm:p-3 rounded-2xl">
-                <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+          <div className="text-center mb-4 sm:mb-6 md:mb-8">
+            <div className="flex justify-center mb-2 sm:mb-3 md:mb-4">
+              <div className="bg-indigo-600 p-2 sm:p-2.5 md:p-3 rounded-2xl">
+                <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" />
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800">
               University Application Form
             </h1>
-            <p className="text-sm sm:text-base text-gray-500 mt-1.5 sm:mt-2">
+            <p className="text-xs sm:text-sm md:text-base text-gray-500 mt-1 sm:mt-1.5 md:mt-2">
               Complete all sections to submit your application
             </p>
           </div>
 
           {/* Progress Steps */}
-          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-6 sm:mb-8">
+          <div className="bg-white rounded-xl shadow-sm p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 md:mb-8">
             <div className="flex justify-between items-center">
               {[
                 { number: 1, label: 'Personal' },
@@ -250,8 +250,8 @@ const ApplicationPage = () => {
                 />
               ))}
             </div>
-            <div className="text-center mt-3 sm:mt-4">
-              <span className="text-xs sm:text-sm text-gray-500">
+            <div className="text-center mt-2 sm:mt-3 md:mt-4">
+              <span className="text-[10px] sm:text-xs md:text-sm text-gray-500">
                 Step {currentStep} of {totalSteps}
               </span>
             </div>
@@ -260,25 +260,25 @@ const ApplicationPage = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8"
+            className="bg-white rounded-xl shadow-lg p-3 sm:p-4 md:p-6 lg:p-8"
           >
             {/* Error Message */}
             {error && (
-              <div className="mb-4 sm:mb-6 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
-                <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="mb-3 sm:mb-4 md:mb-6 p-2.5 sm:p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-1.5 sm:gap-2">
+                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                <p className="text-xs sm:text-sm text-red-600">{error}</p>
               </div>
             )}
 
             {/* Success Message */}
             {success && (
-              <div className="mb-4 sm:mb-6 p-3 bg-green-50 border border-green-200 rounded-lg flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <div className="mb-3 sm:mb-4 md:mb-6 p-2.5 sm:p-3 bg-green-50 border border-green-200 rounded-lg flex items-start gap-1.5 sm:gap-2">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm text-green-600 font-semibold">
+                  <p className="text-xs sm:text-sm text-green-600 font-semibold">
                     Application submitted successfully!
                   </p>
-                  <p className="text-xs text-green-500 mt-0.5">
+                  <p className="text-[10px] sm:text-xs text-green-500 mt-0.5">
                     Redirecting to confirmation page...
                   </p>
                 </div>
@@ -287,82 +287,82 @@ const ApplicationPage = () => {
 
             {/* Step 1: Personal Information */}
             {currentStep === 1 && (
-              <div className="space-y-4 sm:space-y-5">
-                <div className="flex items-center gap-2 mb-3 sm:mb-4">
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
                   <User className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600" />
-                  <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                  <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800">
                     Personal Information
                   </h2>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="grid sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       First Name *
                     </label>
                     <input
                       type="text"
                       {...register('firstName')}
                       placeholder="John"
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.firstName ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     />
                     {errors.firstName && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.firstName.message}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Last Name *
                     </label>
                     <input
                       type="text"
                       {...register('lastName')}
                       placeholder="Doe"
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.lastName ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     />
                     {errors.lastName && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.lastName.message}
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-3 gap-3 sm:gap-4">
+                <div className="grid sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Date of Birth *
                     </label>
                     <input
                       type="date"
                       {...register('dateOfBirth')}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.dateOfBirth
                           ? 'border-red-500'
                           : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     />
                     {errors.dateOfBirth && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.dateOfBirth.message}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Gender *
                     </label>
                     <select
                       {...register('gender')}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.gender ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     >
                       <option value="">Select Gender</option>
                       <option value="male">Male</option>
@@ -370,27 +370,27 @@ const ApplicationPage = () => {
                       <option value="other">Other</option>
                     </select>
                     {errors.gender && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.gender.message}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Nationality *
                     </label>
                     <input
                       type="text"
                       {...register('nationality')}
                       placeholder="Bangladeshi"
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.nationality
                           ? 'border-red-500'
                           : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     />
                     {errors.nationality && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.nationality.message}
                       </p>
                     )}
@@ -401,47 +401,47 @@ const ApplicationPage = () => {
 
             {/* Step 2: Contact Information */}
             {currentStep === 2 && (
-              <div className="space-y-4 sm:space-y-5">
-                <div className="flex items-center gap-2 mb-3 sm:mb-4">
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600" />
-                  <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                  <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800">
                     Contact Information
                   </h2>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="grid sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Email Address *
                     </label>
                     <input
                       type="email"
                       {...register('email')}
                       placeholder="student@email.com"
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.email ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     />
                     {errors.email && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.email.message}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Phone Number *
                     </label>
                     <input
                       type="tel"
                       {...register('phone')}
                       placeholder="+880 1712 345678"
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.phone ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     />
                     {errors.phone && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.phone.message}
                       </p>
                     )}
@@ -449,57 +449,57 @@ const ApplicationPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                     Address *
                   </label>
                   <input
                     type="text"
                     {...register('address')}
                     placeholder="123 Main Street"
-                    className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                    className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                       errors.address ? 'border-red-500' : 'border-gray-300'
-                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                   />
                   {errors.address && (
-                    <p className="mt-1 text-xs text-red-600">
+                    <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                       {errors.address.message}
                     </p>
                   )}
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="grid sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       City *
                     </label>
                     <input
                       type="text"
                       {...register('city')}
                       placeholder="Dhaka"
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.city ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     />
                     {errors.city && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.city.message}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Country *
                     </label>
                     <input
                       type="text"
                       {...register('country')}
                       placeholder="Bangladesh"
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.country ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     />
                     {errors.country && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.country.message}
                       </p>
                     )}
@@ -510,24 +510,24 @@ const ApplicationPage = () => {
 
             {/* Step 3: Academic Information */}
             {currentStep === 3 && (
-              <div className="space-y-4 sm:space-y-5">
-                <div className="flex items-center gap-2 mb-3 sm:mb-4">
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
                   <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600" />
-                  <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                  <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800">
                     Academic Information
                   </h2>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="grid sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Program *
                     </label>
                     <select
                       {...register('program')}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.program ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     >
                       <option value="">Select Program</option>
                       <option value="bsc">Bachelor of Science</option>
@@ -541,20 +541,20 @@ const ApplicationPage = () => {
                       </option>
                     </select>
                     {errors.program && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.program.message}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Department *
                     </label>
                     <select
                       {...register('department')}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.department ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     >
                       <option value="">Select Department</option>
                       <option value="cse">
@@ -568,23 +568,23 @@ const ApplicationPage = () => {
                       <option value="english">English</option>
                     </select>
                     {errors.department && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.department.message}
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="grid sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Semester *
                     </label>
                     <select
                       {...register('semester')}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.semester ? 'border-red-500' : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     >
                       <option value="">Select Semester</option>
                       <option value="1">1st Semester</option>
@@ -597,22 +597,22 @@ const ApplicationPage = () => {
                       <option value="8">8th Semester</option>
                     </select>
                     {errors.semester && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.semester.message}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                       Academic Year *
                     </label>
                     <select
                       {...register('academicYear')}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                      className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                         errors.academicYear
                           ? 'border-red-500'
                           : 'border-gray-300'
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                     >
                       <option value="">Select Year</option>
                       <option value="2024-2025">2024-2025</option>
@@ -620,72 +620,72 @@ const ApplicationPage = () => {
                       <option value="2026-2027">2026-2027</option>
                     </select>
                     {errors.academicYear && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                         {errors.academicYear.message}
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div className="border-t border-gray-200 pt-4 sm:pt-5">
-                  <h3 className="text-sm sm:text-base font-semibold text-gray-700 mb-3">
+                <div className="border-t border-gray-200 pt-3 sm:pt-4 md:pt-5">
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-gray-700 mb-2 sm:mb-3">
                     Previous Education
                   </h3>
-                  <div className="grid sm:grid-cols-3 gap-3 sm:gap-4">
+                  <div className="grid sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                         School/College *
                       </label>
                       <input
                         type="text"
                         {...register('previousSchool')}
                         placeholder="ABC School"
-                        className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                        className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                           errors.previousSchool
                             ? 'border-red-500'
                             : 'border-gray-300'
-                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                       />
                       {errors.previousSchool && (
-                        <p className="mt-1 text-xs text-red-600">
+                        <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                           {errors.previousSchool.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                         Graduation Year *
                       </label>
                       <input
                         type="text"
                         {...register('graduationYear')}
                         placeholder="2023"
-                        className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                        className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                           errors.graduationYear
                             ? 'border-red-500'
                             : 'border-gray-300'
-                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                       />
                       {errors.graduationYear && (
-                        <p className="mt-1 text-xs text-red-600">
+                        <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                           {errors.graduationYear.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                         GPA *
                       </label>
                       <input
                         type="text"
                         {...register('gpa')}
                         placeholder="3.50"
-                        className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                        className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                           errors.gpa ? 'border-red-500' : 'border-gray-300'
-                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base`}
+                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base`}
                       />
                       {errors.gpa && (
-                        <p className="mt-1 text-xs text-red-600">
+                        <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                           {errors.gpa.message}
                         </p>
                       )}
@@ -697,68 +697,68 @@ const ApplicationPage = () => {
 
             {/* Step 4: Additional Information */}
             {currentStep === 4 && (
-              <div className="space-y-4 sm:space-y-5">
-                <div className="flex items-center gap-2 mb-3 sm:mb-4">
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
                   <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600" />
-                  <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                  <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800">
                     Additional Information
                   </h2>
                 </div>
 
                 <div>
-                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                     Why do you want to join SIU? *
                   </label>
                   <textarea
                     {...register('motivation')}
                     rows={4}
                     placeholder="Describe your motivation, goals, and why you chose SIU..."
-                    className={`w-full px-3 sm:px-4 py-2 sm:py-2.5 border ${
+                    className={`w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border ${
                       errors.motivation ? 'border-red-500' : 'border-gray-300'
-                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base resize-y`}
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base resize-y`}
                   />
                   {errors.motivation && (
-                    <p className="mt-1 text-xs text-red-600">
+                    <p className="mt-0.5 sm:mt-1 text-[10px] sm:text-xs text-red-600">
                       {errors.motivation.message}
                     </p>
                   )}
-                  <p className="mt-1 text-xs text-gray-400">
+                  <p className="mt-0.5 text-[10px] text-gray-400">
                     Minimum 50 characters
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                     Extracurricular Activities
                   </label>
                   <textarea
                     {...register('extracurricular')}
                     rows={2}
                     placeholder="List your extracurricular activities, hobbies, or achievements..."
-                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base resize-y"
+                    className="w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base resize-y"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 mb-0.5 sm:mb-1">
                     References (Optional)
                   </label>
                   <textarea
                     {...register('references')}
                     rows={2}
                     placeholder="Provide names and contact of references..."
-                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm sm:text-base resize-y"
+                    className="w-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm md:text-base resize-y"
                   />
                 </div>
 
-                <div className="border-t border-gray-200 pt-4">
-                  <h3 className="text-sm sm:text-base font-semibold text-gray-700 mb-3">
+                <div className="border-t border-gray-200 pt-3 sm:pt-4">
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-gray-700 mb-2 sm:mb-3">
                     Document Upload
                   </h3>
-                  <div className="grid sm:grid-cols-3 gap-3 sm:gap-4">
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 text-center hover:border-indigo-500 transition">
-                      <Upload className="w-6 h-6 mx-auto text-gray-400 mb-1.5" />
-                      <label className="block text-xs sm:text-sm font-medium text-gray-700 cursor-pointer">
+                  <div className="grid sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-2.5 sm:p-3 md:p-4 text-center hover:border-indigo-500 transition">
+                      <Upload className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-gray-400 mb-1" />
+                      <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 cursor-pointer">
                         Transcript
                         <input
                           type="file"
@@ -767,13 +767,13 @@ const ApplicationPage = () => {
                           className="hidden"
                         />
                       </label>
-                      <p className="text-[10px] text-gray-400 mt-0.5">
+                      <p className="text-[8px] sm:text-[10px] text-gray-400 mt-0.5">
                         PDF, DOC (max 5MB)
                       </p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 text-center hover:border-indigo-500 transition">
-                      <Upload className="w-6 h-6 mx-auto text-gray-400 mb-1.5" />
-                      <label className="block text-xs sm:text-sm font-medium text-gray-700 cursor-pointer">
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-2.5 sm:p-3 md:p-4 text-center hover:border-indigo-500 transition">
+                      <Upload className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-gray-400 mb-1" />
+                      <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 cursor-pointer">
                         Certificate
                         <input
                           type="file"
@@ -782,13 +782,13 @@ const ApplicationPage = () => {
                           className="hidden"
                         />
                       </label>
-                      <p className="text-[10px] text-gray-400 mt-0.5">
+                      <p className="text-[8px] sm:text-[10px] text-gray-400 mt-0.5">
                         PDF, JPG, PNG (max 5MB)
                       </p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 text-center hover:border-indigo-500 transition">
-                      <Upload className="w-6 h-6 mx-auto text-gray-400 mb-1.5" />
-                      <label className="block text-xs sm:text-sm font-medium text-gray-700 cursor-pointer">
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-2.5 sm:p-3 md:p-4 text-center hover:border-indigo-500 transition">
+                      <Upload className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-gray-400 mb-1" />
+                      <label className="block text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 cursor-pointer">
                         Photo
                         <input
                           type="file"
@@ -797,21 +797,21 @@ const ApplicationPage = () => {
                           className="hidden"
                         />
                       </label>
-                      <p className="text-[10px] text-gray-400 mt-0.5">
+                      <p className="text-[8px] sm:text-[10px] text-gray-400 mt-0.5">
                         JPG, PNG (max 2MB)
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-2 pt-2">
+                <div className="flex items-start gap-1.5 sm:gap-2 pt-1 sm:pt-2">
                   <input
                     type="checkbox"
                     {...register('agreeTerms')}
-                    className="w-4 h-4 mt-0.5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 mt-0.5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 flex-shrink-0"
                   />
                   <div>
-                    <label className="text-xs sm:text-sm text-gray-700">
+                    <label className="text-[10px] sm:text-xs md:text-sm text-gray-700">
                       I confirm that all the information provided is true and
                       accurate. I agree to the{' '}
                       <a href="#" className="text-indigo-600 hover:underline">
@@ -820,7 +820,7 @@ const ApplicationPage = () => {
                       of admission.
                     </label>
                     {errors.agreeTerms && (
-                      <p className="mt-1 text-xs text-red-600">
+                      <p className="mt-0.5 text-[10px] sm:text-xs text-red-600">
                         {errors.agreeTerms.message}
                       </p>
                     )}
@@ -830,18 +830,18 @@ const ApplicationPage = () => {
             )}
 
             {/* Navigation Buttons */}
-            <div className="flex flex-col sm:flex-row justify-between gap-3 mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
+            <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-3 mt-4 sm:mt-6 md:mt-8 pt-3 sm:pt-4 md:pt-6 border-t border-gray-200">
               <button
                 type="button"
                 onClick={prevStep}
-                className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold transition flex items-center justify-center gap-2 text-sm sm:text-base ${
+                className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-lg font-semibold transition flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base ${
                   currentStep === 1
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
                 disabled={currentStep === 1}
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Previous
               </button>
 
@@ -849,21 +849,21 @@ const ApplicationPage = () => {
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="bg-indigo-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-indigo-700 transition flex items-center justify-center gap-2 text-sm sm:text-base"
+                  className="bg-indigo-600 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-lg font-semibold hover:bg-indigo-700 transition flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base"
                 >
                   Next
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
               ) : (
                 <button
                   type="submit"
                   disabled={isLoading || success}
-                  className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition flex items-center justify-center gap-2 text-sm sm:text-base disabled:opacity-70"
+                  className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base disabled:opacity-70"
                 >
                   {isLoading ? (
                     <>
                       <svg
-                        className="animate-spin h-4 w-4 text-white"
+                        className="animate-spin h-3.5 w-3.5 sm:h-4 sm:w-4 text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -886,7 +886,7 @@ const ApplicationPage = () => {
                     </>
                   ) : success ? (
                     <>
-                      <CheckCircle className="w-4 h-4" />
+                      <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       Submitted!
                     </>
                   ) : (

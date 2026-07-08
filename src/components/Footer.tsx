@@ -84,14 +84,14 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-[#0a2b4e] text-white pt-12 pb-4">
+    <footer className="bg-[#0a2b4e] text-white pt-10 sm:pt-12 pb-4 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-[#1a3f64]/50">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pb-6 sm:pb-8 border-b border-[#1a3f64]/50">
           {/* Column 1: About SIU */}
-          <div>
-            <div className="flex items-center mb-4">
-              <div className="h-12 w-12 bg-white rounded-lg flex items-center justify-center overflow-hidden shadow-lg">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center mb-3 sm:mb-4">
+              <div className="h-10 sm:h-12 w-10 sm:w-12 bg-white rounded-lg flex items-center justify-center overflow-hidden shadow-lg flex-shrink-0">
                 <img
                   src="/assets/logo.png"
                   alt="SIU Logo"
@@ -101,23 +101,23 @@ const Footer: React.FC = () => {
                   }}
                 />
               </div>
-              <div className="ml-3">
-                <span className="text-white font-bold text-lg block">
+              <div className="ml-2.5 sm:ml-3 min-w-0">
+                <span className="text-white font-bold text-base sm:text-lg block leading-tight truncate">
                   SYLHET
                 </span>
-                <span className="text-[#6aabf7] font-semibold text-sm block">
+                <span className="text-[#6aabf7] font-semibold text-xs sm:text-sm block leading-tight truncate">
                   INTERNATIONAL
                 </span>
-                <span className="text-white font-bold text-base block">
+                <span className="text-white font-bold text-sm sm:text-base block leading-tight truncate">
                   UNIVERSITY
                 </span>
               </div>
             </div>
-            <p className="text-blue-100/70 text-sm leading-relaxed mb-4">
+            <p className="text-blue-100/70 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
               Sylhet International University (SIU) is committed to providing
               quality education and fostering innovation for a brighter future.
             </p>
-            <div className="flex space-x-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.id}
@@ -125,9 +125,11 @@ const Footer: React.FC = () => {
                   aria-label={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-[#1a3f64] hover:bg-[#6aabf7] rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-lg"
+                  className="w-8 sm:w-9 h-8 sm:h-9 bg-[#1a3f64] hover:bg-[#6aabf7] rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-lg"
                 >
-                  <span className="text-white text-sm">{social.icon}</span>
+                  <span className="text-white text-xs sm:text-sm">
+                    {social.icon}
+                  </span>
                 </a>
               ))}
             </div>
@@ -135,17 +137,19 @@ const Footer: React.FC = () => {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white border-b-2 border-[#6aabf7] pb-2 inline-block">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white border-b-2 border-[#6aabf7] pb-1.5 sm:pb-2 inline-block">
               Quick Links
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2 sm:space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.id}>
                   <a
                     href={link.href}
-                    className="text-blue-100/70 hover:text-white transition-all duration-200 hover:pl-2 text-sm flex items-center"
+                    className="text-blue-100/70 hover:text-white transition-all duration-200 hover:pl-2 text-xs sm:text-sm flex items-center"
                   >
-                    <span className="mr-2 text-[#6aabf7]">›</span>
+                    <span className="mr-1.5 sm:mr-2 text-[#6aabf7] text-sm sm:text-base">
+                      ›
+                    </span>
                     {link.label}
                   </a>
                 </li>
@@ -155,17 +159,19 @@ const Footer: React.FC = () => {
 
           {/* Column 3: For Students */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white border-b-2 border-[#6aabf7] pb-2 inline-block">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white border-b-2 border-[#6aabf7] pb-1.5 sm:pb-2 inline-block">
               For Students
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2 sm:space-y-2.5">
               {studentLinks.map((link) => (
                 <li key={link.id}>
                   <a
                     href={link.href}
-                    className="text-blue-100/70 hover:text-white transition-all duration-200 hover:pl-2 text-sm flex items-center"
+                    className="text-blue-100/70 hover:text-white transition-all duration-200 hover:pl-2 text-xs sm:text-sm flex items-center"
                   >
-                    <span className="mr-2 text-[#6aabf7]">›</span>
+                    <span className="mr-1.5 sm:mr-2 text-[#6aabf7] text-sm sm:text-base">
+                      ›
+                    </span>
                     {link.label}
                   </a>
                 </li>
@@ -174,40 +180,40 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Column 4: Contact Information */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-white border-b-2 border-[#6aabf7] pb-2 inline-block">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white border-b-2 border-[#6aabf7] pb-1.5 sm:pb-2 inline-block">
               Contact Us
             </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="text-[#6aabf7] mt-1 flex-shrink-0" />
-                <span className="text-blue-100/70 text-sm">
+            <ul className="space-y-2.5 sm:space-y-3">
+              <li className="flex items-start space-x-2.5 sm:space-x-3">
+                <FaMapMarkerAlt className="text-[#6aabf7] mt-0.5 sm:mt-1 flex-shrink-0 text-xs sm:text-sm" />
+                <span className="text-blue-100/70 text-xs sm:text-sm">
                   Sylhet International University
                   <br />
                   Bagbari, Sylhet-3100, Bangladesh
                 </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <FaPhone className="text-[#6aabf7] flex-shrink-0" />
+              <li className="flex items-center space-x-2.5 sm:space-x-3">
+                <FaPhone className="text-[#6aabf7] flex-shrink-0 text-xs sm:text-sm" />
                 <a
                   href="tel:+880821234567"
-                  className="text-blue-100/70 hover:text-white transition-colors text-sm"
+                  className="text-blue-100/70 hover:text-white transition-colors text-xs sm:text-sm break-words"
                 >
                   +880 821 234567
                 </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <FaEnvelope className="text-[#6aabf7] flex-shrink-0" />
+              <li className="flex items-center space-x-2.5 sm:space-x-3">
+                <FaEnvelope className="text-[#6aabf7] flex-shrink-0 text-xs sm:text-sm" />
                 <a
                   href="mailto:info@siu.edu.bd"
-                  className="text-blue-100/70 hover:text-white transition-colors text-sm"
+                  className="text-blue-100/70 hover:text-white transition-colors text-xs sm:text-sm break-all"
                 >
                   info@siu.edu.bd
                 </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <FaClock className="text-[#6aabf7] flex-shrink-0" />
-                <span className="text-blue-100/70 text-sm">
+              <li className="flex items-center space-x-2.5 sm:space-x-3">
+                <FaClock className="text-[#6aabf7] flex-shrink-0 text-xs sm:text-sm" />
+                <span className="text-blue-100/70 text-xs sm:text-sm">
                   Sun-Thu: 9:00 AM - 5:00 PM
                 </span>
               </li>
@@ -216,27 +222,27 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="pt-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-blue-100/50 text-sm text-center md:text-left">
+        <div className="pt-4 sm:pt-6 flex flex-col md:flex-row justify-between items-center space-y-3 sm:space-y-4 md:space-y-0">
+          <p className="text-blue-100/50 text-[10px] sm:text-xs md:text-sm text-center md:text-left">
             &copy; {currentYear} Sylhet International University (SIU). All
             Rights Reserved.
           </p>
-          <div className="flex space-x-6">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             <a
               href="/privacy"
-              className="text-blue-100/50 hover:text-white text-sm transition-colors"
+              className="text-blue-100/50 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors"
             >
               Privacy Policy
             </a>
             <a
               href="/terms"
-              className="text-blue-100/50 hover:text-white text-sm transition-colors"
+              className="text-blue-100/50 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors"
             >
               Terms of Service
             </a>
             <a
               href="/faq"
-              className="text-blue-100/50 hover:text-white text-sm transition-colors"
+              className="text-blue-100/50 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors"
             >
               FAQ
             </a>
@@ -244,8 +250,8 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Developed By */}
-        <div className="mt-4 pt-4 border-t border-[#1a3f64]/30 text-center">
-          <p className="text-blue-100/30 text-xs">
+        <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-[#1a3f64]/30 text-center">
+          <p className="text-blue-100/30 text-[10px] sm:text-xs">
             Developed with ❤️ by SIU IT Team
           </p>
         </div>
